@@ -1,3 +1,4 @@
+*.swp
 php-src
 extensions/imagick/
 extensions/phpredis/

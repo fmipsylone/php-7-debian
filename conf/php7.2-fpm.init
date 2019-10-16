@@ -12,14 +12,14 @@
 # Author: Ondrej Sury <ondrej@debian.org>
 # Adjusted for PHP7 by Kaspars Dambis <hi@kaspars.net>
 
-PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/php7/sbin
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/php7.2/sbin
 DESC="PHP7 FastCGI Process Manager"
-NAME=php7-fpm
-DAEMON=/usr/local/php7/sbin/$NAME
-CONFFILE=/usr/local/php7/etc/php-fpm.conf
+NAME=php7.2-fpm
+DAEMON=/usr/local/php7.2/sbin/$NAME
+CONFFILE=/usr/local/php7.2/etc/php-fpm.conf
 DAEMON_ARGS="--daemonize --fpm-config $CONFFILE"
 CONF_PIDFILE=$(sed -n 's/^pid[ =]*//p' $CONFFILE)
-PIDFILE=${CONF_PIDFILE:-/var/run/php7-fpm.pid}
+PIDFILE=${CONF_PIDFILE:-/var/run/php7.2-fpm.pid}
 TIMEOUT=30
 SCRIPTNAME=/etc/init.d/$NAME
 

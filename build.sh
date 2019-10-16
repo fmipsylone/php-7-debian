@@ -8,8 +8,8 @@ CORE_COUNT=$(cat /proc/cpuinfo | grep -c processor)
 JOB_COUNT=${JOB_COUNT:-$CORE_COUNT}
 
 # Dependencies
-sudo apt-get update
-sudo apt-get install -y \
+apt-get update
+apt-get install -y \
     build-essential \
     pkg-config \
     git-core \
@@ -26,17 +26,17 @@ sudo apt-get install -y \
     libpspell-dev \
     libreadline-dev
 
-sudo mkdir /usr/local/php7
+mkdir /usr/local/php7.2
 
 git clone https://github.com/php/php-src.git
 cd php-src
 git fetch --tags --prune
-git checkout tags/php-7.3.7
+git checkout tags/php-7.2.23
 ./buildconf --force
 
-CONFIGURE_STRING="--prefix=/usr/local/php7 \
+CONFIGURE_STRING="--prefix=/usr/local/php7.2 \
                   --enable-huge-code-pages \
-                  --with-config-file-scan-dir=/usr/local/php7/etc/conf.d \
+                  --with-config-file-scan-dir=/usr/local/php7.2/etc/conf.d \
                   --enable-bcmath \
                   --with-bz2 \
                   --enable-calendar \
@@ -75,4 +75,4 @@ CONFIGURE_STRING="--prefix=/usr/local/php7 \
 ./configure $CONFIGURE_STRING
 
 make -j "$JOB_COUNT"
-sudo make install
+make install
